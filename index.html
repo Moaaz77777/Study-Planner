@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+\1
+
+  <meta name="theme-color" content="#17142f">
+  <meta name="description" content="Your personal weekly study planner">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101321">
+<title>My Study Planner</title>
+<style>
+:root{--bg:#0d1020;--panel:#171b2d;--panel2:#20253a;--line:#2c324b;--text:#f4f5fb;--muted:#9ba3bb;--accent:#8498ff;--accent2:#a6b3ff;--green:#61d6a5;--red:#ff788b;--shadow:0 18px 55px #05071366}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#20264a 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.app{max-width:1180px;margin:auto;padding:32px 24px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:26px}
+.brand{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#8ea2ff,#626fce);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #7184ff44}
+h1{font-size:23px;margin:0;letter-spacing:-.6px}.sub{color:var(--muted);font-size:12px;letter-spacing:1.7px;margin-top:4px}
+.header-right{display:flex;align-items:center;gap:10px}.date-pill,.local-pill{border:1px solid var(--line);background:#171b2dcc;padding:10px 13px;border-radius:12px;color:var(--muted);font-size:12px}.local-pill{color:var(--green);display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:16px;margin-bottom:17px}.welcome,.stat-card,.main-card,.side-card{background:linear-gradient(145deg,#1a2035,#15192a);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.welcome{padding:24px 26px;position:relative;overflow:hidden}.welcome:after{content:"";position:absolute;width:210px;height:210px;border-radius:50%;background:#7c8cff12;right:-65px;top:-95px}
+.eyebrow{font-size:11px;color:var(--accent2);font-weight:700;letter-spacing:1.8px;text-transform:uppercase}.welcome h2{font-size:27px;margin:9px 0 7px;letter-spacing:-.8px}.welcome p{color:var(--muted);margin:0;font-size:13px;line-height:1.6}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat-card{padding:19px;display:flex;flex-direction:column;justify-content:space-between;min-height:112px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.stat-icon{font-size:17px}.stat-num{font-size:27px;font-weight:750;margin-top:10px;letter-spacing:-1px}.stat-foot{font-size:11px;color:var(--muted);margin-top:2px}
+.main-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.8fr);gap:16px}.main-card,.side-card{padding:21px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}.section-head h3{font-size:16px;margin:0}.hint{font-size:11px;color:var(--muted)}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:22px}.day{border:1px solid var(--line);background:#111629;color:var(--muted);border-radius:13px;padding:11px 4px 9px;text-align:center;transition:.18s}.day:hover{border-color:#6979cb;color:var(--text)}.day.active{background:linear-gradient(145deg,#7588f0,#596bc6);border-color:transparent;color:white;box-shadow:0 7px 20px #7184ff33}.day-name{font-size:11px;font-weight:700}.day-count{font-size:10px;margin-top:6px;opacity:.75}
+.day-title{display:flex;align-items:center;justify-content:space-between;margin:0 0 12px}.day-title h4{font-size:17px;margin:0}.completion{font-size:11px;color:var(--green)}
+.task-list{display:flex;flex-direction:column;gap:9px}.task{display:flex;align-items:center;gap:12px;padding:12px 13px;background:#111629;border:1px solid #262d45;border-radius:13px}.task-check{appearance:none;width:19px;height:19px;border:1.5px solid #59627f;border-radius:6px;flex:none;display:grid;place-items:center;margin:0}.task-check:checked{background:var(--green);border-color:var(--green)}.task-check:checked:after{content:"✓";font-size:13px;color:#10251e;font-weight:900}.task-info{flex:1;min-width:0}.task-name{font-size:13px;font-weight:600;overflow-wrap:anywhere}.task.done .task-name{text-decoration:line-through;color:#7f89a3}.task-meta{font-size:10px;color:var(--muted);margin-top:4px}.tag{font-size:10px;padding:5px 8px;border-radius:7px;background:#293052;color:#b8c3ff;white-space:nowrap}.delete{border:0;background:transparent;color:#707a97;font-size:17px;padding:3px}.delete:hover{color:var(--red)}
+.empty{border:1px dashed #39415d;border-radius:14px;padding:25px;text-align:center;color:var(--muted);font-size:12px}.empty b{display:block;color:#dce0f1;font-size:13px;margin-bottom:5px}
+.add-form{display:grid;grid-template-columns:1.5fr .8fr .7fr auto;gap:8px;margin-top:14px}.field,textarea,select{width:100%;background:#101528;border:1px solid #303852;color:var(--text);border-radius:10px;padding:11px 12px;outline:none;font-size:12px}.field:focus,textarea:focus,select:focus{border-color:#8294f6}.field::placeholder,textarea::placeholder{color:#69738f}.primary{border:0;border-radius:10px;padding:0 15px;background:linear-gradient(135deg,#8498ff,#6577d8);color:white;font-weight:700;font-size:12px;box-shadow:0 7px 18px #7184ff22}.primary:hover{filter:brightness(1.08)}
+.progress-wrap{margin-top:19px;padding-top:17px;border-top:1px solid var(--line)}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin-bottom:9px}.bar{height:7px;background:#292f47;border-radius:20px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#7d91ff,#61d6a5);border-radius:20px;transition:width .25s}
+.side-stack{display:flex;flex-direction:column;gap:16px}.notes-area{min-height:145px;resize:vertical;line-height:1.6}.save-note{font-size:10px;color:var(--green);margin-top:8px;min-height:14px}.week-list{display:flex;flex-direction:column;gap:12px}.week-row{display:grid;grid-template-columns:75px 1fr 30px;align-items:center;gap:9px;font-size:11px}.week-row .bar{height:6px}.week-row .pct{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.exam-list{display:flex;flex-direction:column;gap:9px}.exam{display:flex;align-items:center;gap:10px;background:#111629;border:1px solid #262d45;padding:10px;border-radius:11px}.exam-date{width:39px;height:42px;background:#2b3151;border-radius:9px;display:grid;place-items:center;text-align:center;flex:none}.exam-date strong{font-size:15px;line-height:1}.exam-date span{font-size:9px;color:var(--muted);text-transform:uppercase}.exam-info{flex:1;min-width:0}.exam-info b{font-size:11px;display:block}.exam-info small{font-size:10px;color:var(--muted)}.exam button{background:none;border:0;color:#77809a;font-size:16px}.exam-add{display:grid;grid-template-columns:1fr 1fr auto;gap:7px;margin-top:12px}
+.footer{text-align:center;color:#606a86;font-size:10px;margin-top:22px}
+@media(max-width:800px){.app{padding:22px 15px 40px}.hero{grid-template-columns:1fr}.main-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.welcome h2{font-size:24px}.side-stack{display:grid;grid-template-columns:1fr 1fr}.add-form{grid-template-columns:1fr 1fr}.add-form .primary{min-height:39px}.days{gap:5px}.day{padding:10px 2px}.day-name{font-size:10px}}
+@media(max-width:520px){header{align-items:flex-start}.date-pill{display:none}.local-pill{font-size:10px;padding:8px}.brand h1{font-size:19px}.logo{width:40px;height:40px}.welcome{padding:20px}.stats{gap:8px}.stat-card{padding:14px;min-height:100px}.stat-num{font-size:24px}.main-card,.side-card{padding:16px}.days{gap:4px}.day{border-radius:10px;padding:9px 1px}.day-name{font-size:9px}.day-count{font-size:9px}.task{padding:10px}.tag{display:none}.side-stack{grid-template-columns:1fr}.exam-add{grid-template-columns:1fr 1fr}.exam-add button{grid-column:1/-1;min-height:37px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="brand"><div class="logo">✦</div><div><h1>My Study Planner</h1><div class="sub">PLAN SMART. STUDY BETTER.</div></div></div>
+ <div class="header-right"><div class="date-pill" id="todayLabel"></div><div class="local-pill"><span class="dot"></span> Saved on this device</div></div>
+</header>
+<section class="hero">
+ <div class="welcome"><div class="eyebrow">YOUR PERSONAL STUDY SPACE</div><h2 id="greeting">Let's make today count.</h2><p>Small steps every day add up. Pick a day, organize your tasks, and keep track of your progress.</p></div>
+ <div class="stats">
+  <div class="stat-card"><div class="stat-top"><span>Today's Tasks</span><span class="stat-icon">☑</span></div><div><div class="stat-num" id="todayStat">0/0</div><div class="stat-foot">completed tasks</div></div></div>
+  <div class="stat-card"><div class="stat-top"><span>Weekly Progress</span><span class="stat-icon">↗</span></div><div><div class="stat-num" id="weekStat">0%</div><div class="stat-foot">this week</div></div></div>
+ </div>
+</section>
+<div class="main-grid">
+ <main class="main-card">
+  <div class="section-head"><h3>Weekly Schedule</h3><span class="hint">Choose a day to get started</span></div>
+  <div class="days" id="days"></div>
+  <div class="day-title"><h4 id="selectedDay">Sunday's Schedule</h4><span class="completion" id="dayCompletion">0% completed</span></div>
+  <div class="task-list" id="taskList"></div>
+  <form class="add-form" id="taskForm">
+   <input class="field" id="taskName" placeholder="What do you need to study?" maxlength="100" required>
+   <select id="taskSubject"><option value="">Subject</option><option>Math</option><option>English</option><option>Chemistry</option><option>Business</option><option>Economics</option><option>German</option><option>Other</option></select>
+   <input class="field" id="taskTime" type="time" aria-label="Task time">
+   <button class="primary" type="submit">＋ Add task</button>
+  </form>
+  <div class="progress-wrap"><div class="progress-label"><span>Daily progress</span><strong id="progressText">0%</strong></div><div class="bar"><div class="bar-fill" id="progressBar" style="width:0%"></div></div></div>
+ </main>
+ <aside class="side-stack">
+  <section class="side-card"><div class="section-head"><h3>Quick Notes</h3><span class="hint">For this day</span></div><textarea class="notes-area" id="notes" placeholder="Write reminders, ideas, or things you don't want to forget..."></textarea><div class="save-note" id="noteStatus">Notes save automatically on this device.</div></section>
+  <section class="side-card"><div class="section-head"><h3>Weekly Overview</h3><span class="hint">Tasks completed</span></div><div class="week-list" id="weekOverview"></div></section>
+  <section class="side-card"><div class="section-head"><h3>Upcoming Exams</h3><span class="hint">Keep an eye on dates</span></div><div class="exam-list" id="examList"></div><form class="exam-add" id="examForm"><input class="field" id="examName" placeholder="Exam / assignment" required maxlength="60"><input class="field" id="examDate" type="date" required><button class="primary" type="submit">＋ Add</button></form></section>
+ </aside>
+</div>
+<div class="footer">Your planner is saved locally in this browser. It does not sync between devices yet.</div>
+</div>
+<script>
+const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const KEY='myStudyPlanner_v1';
+const fresh=()=>({tasks:Object.fromEntries(DAYS.map(d=>[d,[]])),notes:Object.fromEntries(DAYS.map(d=>[d,''])),exams:[]});
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){data=fresh()}
+for(const d of DAYS){if(!data.tasks[d])data.tasks[d]=[];if(data.notes[d]===undefined)data.notes[d]=''}
+let selected=DAYS[new Date().getDay()];
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(data))}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function counts(day){const a=data.tasks[day];return [a.filter(t=>t.done).length,a.length]}
+function percent(day){const [d,t]=counts(day);return t?Math.round(d/t*100):0}
+function renderDays(){
+ $('days').innerHTML=DAYS.map(d=>{const [done,total]=counts(d);return `<button class="day ${d===selected?'active':''}" data-day="${d}"><div class="day-name">${d.slice(0,3)}</div><div class="day-count">${done}/${total}</div></button>`}).join('');
+ document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.day;render()}));
+}
+function renderTasks(){
+ const list=data.tasks[selected];
+ $('selectedDay').textContent=selected+"'s Schedule";
+ $('dayCompletion').textContent=percent(selected)+'% completed';
+ $('taskList').innerHTML=list.length?list.map((t,i)=>`<div class="task ${t.done?'done':''}"><input class="task-check" type="checkbox" data-check="${i}" ${t.done?'checked':''}><div class="task-info"><div class="task-name">${esc(t.name)}</div><div class="task-meta">${[t.subject,t.time].filter(Boolean).map(esc).join(' · ')||'Study task'}</div></div>${t.subject?`<span class="tag">${esc(t.subject)}</span>`:''}<button class="delete" data-delete="${i}" aria-label="Delete task">×</button></div>`).join(''):'<div class="empty"><b>No tasks planned yet</b>Add your first task below and build your study day.</div>';
+ document.querySelectorAll('[data-check]').forEach(el=>el.addEventListener('change',()=>{data.tasks[selected][+el.dataset.check].done=el.checked;save();render()}));
+ document.querySelectorAll('[data-delete]').forEach(el=>el.addEventListener('click',()=>{data.tasks[selected].splice(+el.dataset.delete,1);save();render()}));
+ $('progressText').textContent=percent(selected)+'%';$('progressBar').style.width=percent(selected)+'%';
+}
+function renderNotes(){$('notes').value=data.notes[selected]}
+function renderWeek(){
+ $('weekOverview').innerHTML=DAYS.map(d=>`<div class="week-row"><span>${d}</span><div class="bar"><div class="bar-fill" style="width:${percent(d)}%"></div></div><span class="pct">${percent(d)}%</span></div>`).join('');
+ const all=DAYS.flatMap(d=>data.tasks[d]);const done=all.filter(t=>t.done).length;
+ $('weekStat').textContent=(all.length?Math.round(done/all.length*100):0)+'%';
+ const [td,tt]=counts(DAYS[new Date().getDay()]);$('todayStat').textContent=td+'/'+tt;
+}
+function renderExams(){
+ const sorted=[...data.exams].sort((a,b)=>a.date.localeCompare(b.date));
+ $('examList').innerHTML=sorted.length?sorted.map((e,i)=>{const dt=new Date(e.date+'T12:00:00');return `<div class="exam"><div class="exam-date"><strong>${dt.getDate()}</strong><span>${dt.toLocaleString('en',{month:'short'})}</span></div><div class="exam-info"><b>${esc(e.name)}</b><small>${dt.toLocaleDateString('en',{weekday:'long',year:'numeric'})}</small></div><button data-exam-delete="${i}" aria-label="Delete exam">×</button></div>`}).join(''):'<div class="empty"><b>No upcoming exams</b>Add an exam or assignment date.</div>';
+ document.querySelectorAll('[data-exam-delete]').forEach(b=>b.addEventListener('click',()=>{data.exams.splice(+b.dataset.examDelete,1);save();renderExams()}));
+}
+function render(){renderDays();renderTasks();renderNotes();renderWeek();renderExams()}
+$('taskForm').addEventListener('submit',e=>{e.preventDefault();const name=$('taskName').value.trim();if(!name)return;data.tasks[selected].push({name,subject:$('taskSubject').value,time:$('taskTime').value,done:false});save();$('taskName').value='';$('taskTime').value='';$('taskSubject').value='';render()});
+$('notes').addEventListener('input',()=>{data.notes[selected]=$('notes').value;save();$('noteStatus').textContent='✓ Saved';clearTimeout(window.noteTimer);window.noteTimer=setTimeout(()=>$('noteStatus').textContent='Notes save automatically on this device.',1200)});
+$('examForm').addEventListener('submit',e=>{e.preventDefault();data.exams.push({name:$('examName').value.trim(),date:$('examDate').value});save();$('examName').value='';$('examDate').value='';renderExams()});
+const now=new Date();$('todayLabel').textContent=now.toLocaleDateString('en',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+const hour=now.getHours();$('greeting').textContent=hour<12?'Good morning. Ready to focus?':hour<18?'Let’s make today count.':'A little progress goes a long way.';
+$('examDate').min=now.toISOString().slice(0,10);
+render();
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js").catch((err) => {
+        console.error("Service worker registration failed:", err);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
